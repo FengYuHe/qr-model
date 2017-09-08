@@ -1,0 +1,51 @@
+{
+  "name": "QRPrize",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "ShortId": {},
+    "TimeStamp": {
+      "createdAt": "created_at",
+      "updatedAt": "updated_at",
+      "silenceWarnings": true
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "parent_id": {
+      "type": "string"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "number"
+    },
+    "type_name": {
+      "type": "string"
+    },
+    "num": {
+      "type": "number"
+    },
+    "rate": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "scope": {
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

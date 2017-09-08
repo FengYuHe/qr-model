@@ -1,0 +1,29 @@
+{
+  "name": "qr-model",
+  "version": "1.0.0",
+  "description": "qr model",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FengYuHe/qr-model.git"
+  },
+  "keywords": [
+    "qr"
+  ],
+  "author": "FengYuHe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FengYuHe/qr-model/issues"
+  },
+  "homepage": "https://github.com/FengYuHe/qr-model#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "js-md5": "^0.6.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "strong-globalize": "^3.0.0"
+  }
+}
