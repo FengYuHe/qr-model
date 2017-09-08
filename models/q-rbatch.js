@@ -56,7 +56,7 @@ module.exports = function(Qrbatch) {
         err.message = g.f('批次未设置品项');
         throw err;
       }
-      Qrbatch.app.cp.send({type: 'createCode', batch: batch.id, win_rate_id: batch.win_rate_id});
+      // Qrbatch.app.cp.send({type: 'createCode', batch: batch.id, win_rate_id: batch.win_rate_id});
       batch.updateAttributes({status: 7});
       // 统计激活量
       qrCount += Number(batch.count_code);
@@ -67,7 +67,7 @@ module.exports = function(Qrbatch) {
       batches.forEach(async (item) => {
         if (item.win_rate_id && item.status === 2) {
           qrCount += Number(item.count_code);
-          Qrbatch.app.cp.send({type: 'createCode', batch: item.id, win_rate_id: item.win_rate_id});
+          // Qrbatch.app.cp.send({type: 'createCode', batch: item.id, win_rate_id: item.win_rate_id});
           item.updateAttributes({status: 7});
         }
       });
