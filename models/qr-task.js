@@ -90,7 +90,7 @@ module.exports = function(Qrtask) {
     }).then(task => {
       return task.updateAttributes({is_download: true, status: 4});
     }).then(task => {
-      const dirpath = path.join(__dirname, `../../server/storage/code/`);
+      const dirpath = path.join(__dirname, `../../../server/storage/code/`);
       execSync(`cd ${dirpath} && zip -r ${task.id}.zip ${task.id}`);
       res.setHeader('Content-Type', 'application/zip; charset=utf-8');
       res.setHeader('Content-Disposition', `attachment;filename=${encodeURIComponent(task.title)}-${Date.now()}.zip`);
@@ -130,7 +130,7 @@ module.exports = function(Qrtask) {
 
   function writeIn(data) {
     const host = Qrtask.app.get('codeHost');
-    const dirpath = path.join(__dirname, `../../server/storage/code/${data.id}`);
+    const dirpath = path.join(__dirname, `../../../server/storage/code/${data.id}`);
     if (!fs.existsSync(dirpath)) {
       fs.mkdirSync(dirpath);
     }
