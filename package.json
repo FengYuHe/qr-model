@@ -1,6 +1,6 @@
 {
   "name": "qr-model",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "qr model",
   "main": "index.js",
   "scripts": {

@@ -91,10 +91,10 @@ module.exports = function(Qrtask) {
       return task.updateAttributes({is_download: true, status: 4});
     }).then(task => {
       const dirpath = path.join(__dirname, `../../../server/storage/code/`);
-      execSync(`cd ${dirpath} && zip -r ${task.id}.zip ${task.id}`);
+      execSync(`cd ${dirpath} && zip -r ${task.title}-${task.id}.zip ${task.title}-${task.id}`);
       res.setHeader('Content-Type', 'application/zip; charset=utf-8');
-      res.setHeader('Content-Disposition', `attachment;filename=${encodeURIComponent(task.title)}-${Date.now()}.zip`);
-      Promise.fromCallback(cb => Qrtask.app.models.Container.download('code', `${task.id}.zip`, req, res, cb));
+      res.setHeader('Content-Disposition', `attachment;filename=${encodeURIComponent(task.title)}-${task.id}.zip`);
+      Promise.fromCallback(cb => Qrtask.app.models.Container.download('code', `${task.title}-${task.id}.zip`, req, res, cb));
     });
   };
 
@@ -123,14 +123,14 @@ module.exports = function(Qrtask) {
     accepts: [{arg: 'id', type: 'string', required: true, description: '任务id', http: {source: 'path'}},
       {arg: 'req', type: 'object', http: {source: 'req'}},
       {arg: 'res', type: 'object', http: {source: 'res'}}
-      ],
+    ],
     returns: {arg: 'result', type: 'object'},
     http: {verb: 'get', path: '/:id'},
   });
 
   function writeIn(data) {
     const host = Qrtask.app.get('codeHost');
-    const dirpath = path.join(__dirname, `../../../server/storage/code/${data.id}`);
+    const dirpath = path.join(__dirname, `../../../server/storage/code/${data.title}-${data.id}`);
     if (!fs.existsSync(dirpath)) {
       fs.mkdirSync(dirpath);
     }
